@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Learning D3.js: Simple Bar Chart Using Scales</title>
-     <script src="https://d3js.org/d3.v3.min.js"></script>
+<title>Learning D3.js: Simple Bar Chart Using Scales</title>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
 <!--     <script src="https://d3js.org/d3.v5.min.js"></script> -->
 <!--     <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script> -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
+<style>
+
+.container {
+    padding-top: 2em;
+}
+
+h1 {
+    color: #676767;
+}
+
+button {
+    border-color: green;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+</style>
+
+
 </head>
 <body>
 
-    <h1 class="display-3">D3.js: Simple Bar Chart</h1>
 
+<div class="container">
+
+    <h1>Animated Bar Chart</h1>
     <div id="chart"></div>
+    <br>
 
-
-<!-- Create a button to trigger the transition -->
-    <button onclick="triggerTransition()">Show Barchart</button>
-
-
-
-
+    <!-- Create a button to trigger the transition -->
+    <button onclick="triggerTransition()">Click here to show barchart</button>
     <script>
         var myData = [];
         var dataCount = 50;
-
         for(var i = 0; i < dataCount; i++) {
             myData.push(Math.round(Math.random() * 500));
         }
-
         myData.sort(function(a, b){
             return a - b;
         });
-
-
         var margin = {
             top: 30,
             right: 30,
             bottom: 40,
             left: 50
         }
-
         var height = 500 - margin.top - margin.bottom;
         var width = 500 - margin.right - margin.left;
         var animateDuration = 700;
@@ -103,9 +115,7 @@
                 d3.select(this).style("opacity", 1)
             })
 
-
-function triggerTransition() {
-
+    function triggerTransition() {
             myChart.transition()
                 .attr("height", function(d){
                     return yScale(d);
@@ -165,10 +175,9 @@ function triggerTransition() {
                     .style("stroke", "#000")
                 hGuide.selectAll("line")
                     .style("stroke", "#000")
-
-}
-
-
+    }
     </script>
+
+    </div>
 </body>
 </html>
